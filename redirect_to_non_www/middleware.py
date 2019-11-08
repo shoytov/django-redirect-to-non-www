@@ -12,6 +12,6 @@ class RedirectToNonWww:
         if host and host.startswith('www.'):
             non_www = host.replace('www.', '')
             scheme = 'https' if request.is_secure() else 'http'
-            return redirect('{}://{}{}'.format(scheme, non_www, request.get_full_path()))
+            return redirect('{}://{}{}'.format(scheme, non_www, request.get_full_path()), permanent=True)
 
         return response
